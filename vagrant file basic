@@ -1,0 +1,49 @@
+vagrant box add – Nạp box.
+vagrant box list – Xem danh sách các box.
+vagrant suspend – Cho máy ảo tạm nghỉ.
+vagrant halt – Cho máy ảo đi ngủ, shutdown đó.
+vagrant destroy – Cho máy ảo về vườn.
+vagrant login – Đăng nhập vào hệ thống Vagrant Cloud.
+vagrant share --ssh: Chia sẻ máy ảo của bạn cho người khác truy cập, bạn phải gõ lệnh vagrant login trước khi dùng tính năng này.
+vagrant reload: Tải lại các thiết lập trong file Vagrantfile của máy ảo, khi đổi nội dung file đó bạn phải sử dụng lệnh vagrant halt trước để tắt máy ảo, sau đó sử dụng lệnh reload này để nạp lại cấu hình.
+
+
+
+............................
+1 Khởi động máy ảo:
+Để khởi động máy ảo, hãy chắc rằng chúng ta đang ở trong thư mục chứa Vagrantfile. Tiếp theo, dùng lệnh sau để khởi động:
+
+vagrant up
+
+............................
+2 Tắt máy ảo:
+Sau khi thực hành xong, chúng ta nên tắt máy ảo đi để cho nhẹ máy. Muốn tắt máy ảo, ta dùng lệnh:
+
+
+vagrant halt
+............................
+3 Xóa toàn bộ máy ảo:
+Trong trường hợp chúng ta muốn khôi phục lại trạng thái ban đầu, tức là xóa hết tất cả cài đặt của máy ảo, chúng ta dùng lệnh:
+
+
+4 vargant destroy
+
+............................
+ Kiểm tra trạng thái của các máy ảo:
+Đôi khi chúng ta cần nhiều hơn một máy ảo trên cùng một máy. Và đôi khi chúng ta không biết cái nào đang còn chạy để mà tắt đi, chúng ta có thể dụng lệnh sau để kiểm tra:
+
+
+5 vagrant global-status
+
+............................
+
+Config máy ảo 2 core CPU + 2Gb Ram với IP=192.168.33.15 
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "2"]
+  end
+  config.vm.network "private_network", ip: "192.168.33.15"
+
+............................
+
+
